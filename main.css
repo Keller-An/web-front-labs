@@ -1,0 +1,29 @@
+body {
+    background-color:rgb(156, 72, 100);
+    color:bisque;
+    font-family: Arial;
+    margin: 0px; 
+}
+main {
+    color: gold;
+    font-family: Arial;
+    margin: 10px;
+}
+header {
+    background-color:rgba(157, 56, 56, 0.852);
+    color: bisque;
+    padding: 20px;
+    font-size: 20pt; 
+    text-align: center
+}
+footer {
+    background-color:rgba(157, 56, 56, 0.852);
+    color: bisque;
+    padding: 20px;
+    font-size: 15pt;
+    font-style: italic; 
+    text-align: right
+}
+a {
+    text-decoration: none
+}

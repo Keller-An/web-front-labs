@@ -49,3 +49,17 @@ a:active {
     color: black;
     opacity: 0.3;
 }
+
+div.menu {
+    border: 7px solid #3c10a480;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+div.menu:hover {
+    background-color: rgba(124, 104, 238, 0.776);
+    box-shadow: 5px 5px 15px #0db3ef88;
+}
+h1 {
+    text-align: center;
+}

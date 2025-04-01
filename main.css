@@ -25,5 +25,25 @@ footer {
     text-align: right
 }
 a {
+    color: rgb(237, 46, 199);
     text-decoration: none
+}
+a:link {
+    color: rgb(127, 250, 119);
+    text-decoration:overline;
+}
+a:visited {
+    color: rgb(57, 57, 219);
+    text-decoration: line-through;
+}
+a:hover {
+    color: rgb(29, 186, 248);
+    text-decoration: underline;
+    background-color: bisque;
+    box-shadow: 10px 15px 25px rgb(255, 207, 51);
+    padding: 1px;
+}
+a:active {
+    color: black;
+    opacity: 0.3;
 }

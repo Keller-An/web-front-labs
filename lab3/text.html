@@ -9,6 +9,11 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
     <style>
+    .text {
+        overflow: auto;
+        opacity: 0;
+        transition: opacity 1s ease-in-out 1.2s, overflow 1s linear 2s;
+    }
     .block1 {
         color: rgb(232, 101, 101);
         background-color: rgb(152, 209, 177);
@@ -35,11 +40,6 @@
         transition: height 1.5s ease-in-out 1.2s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out;
     }
 
-    .text {
-        overflow: auto;
-        opacity: 0;
-        transition: opacity 1s ease-in-out 0.8s, overflow 1s linear 2s;
-    }
     .block1:hover .text {
         opacity: 1;
         overflow: auto;
@@ -95,7 +95,7 @@
         cursor: pointer;
         text-align: center;
         font-family: "Arial";
-        transition: height 1.5s ease-in-out 1s, background-color 1.2s ease-in-out, border-radius 1s ease-in-out, transform 0.5s ease-in-out;
+        transition: height 1.5s ease-in-out 1s, background-color 1.2s ease-in-out, border-radius 1s ease-in-out;
     }
     .block3:hover {
         background-color: rgb(223, 179, 243);
@@ -103,10 +103,40 @@
         border-radius: 50px;
         color: rgb(22, 24, 110);
         box-shadow: 5px 5px 20px rgba(144, 207, 238, 0.7);
-        transform: scale(1.2);
-        transition: height 1.5s ease-in-out 1.2s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out, transform 0.5s ease-in-out;
+        transition: height 1.5s ease-in-out 1.2s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out;
     }
     .block3:hover .text {
+        opacity: 1;
+        overflow: auto;
+        transition: opacity 1s ease-in-out 2s, overflow 1s linear 2s;
+    }
+
+    .block4 {
+        color: white;
+        background-color: rgb(51, 51, 51);
+        border: 4px solid rgba(200, 200, 200, 0.8);
+        border-radius: 10px;
+        width: 60%;
+        height: 70px;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        font-family: "Courier New";
+        transition: height 1.5s ease-in-out 1s, background-color 1.2s ease-in-out, border-radius 1s ease-in-out;
+    }
+    .block4:hover {
+        background-color: rgb(34, 34, 34);
+        height: 100%;
+        border-radius: 30px;
+        color: rgb(255, 215, 0);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        transition: height 1.5s ease-in-out 1.2s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out;
+    }
+    
+    .block4:hover .text {
         opacity: 1;
         overflow: auto;
         transition: opacity 1s ease-in-out 2s, overflow 1s linear 2s;
@@ -194,6 +224,41 @@
                 моих учителей. Размахивая руками, сопя и поглаживая воображаемую
                 рыжую бороду, я расхаживал по комнате и скрипучим голосом изрекал
                 всякую педагогическую премудрость.
+            </div>
+        </div>
+
+        <div class="block4">
+            <h1>Шаганэ ты моя, Шаганэ</h1>
+            <div>
+                Шаганэ ты моя, Шаганэ!<br>
+                Потому, что я с севера, что ли,<br>
+                Я готов рассказать тебе поле,<br>
+                Про волнистую рожь при луне.<br>
+                Шаганэ ты моя, Шаганэ.<br>
+
+                Потому, что я с севера, что ли,<br>
+                Что луна там огромней в сто раз,<br>
+                Как бы ни был красив Шираз,<br>
+                Он не лучше рязанских раздолий.<br>
+                Потому, что я с севера, что ли.<br>
+
+                Я готов рассказать тебе поле,<br>
+                Эти волосы взял я у ржи,<br>
+                Если хочешь, на палец вяжи —<br>
+                Я нисколько не чувствую боли.<br>
+                Я готов рассказать тебе поле.<br>
+
+                Про волнистую рожь при луне<br>
+                По кудрям ты моим догадайся.<br>
+                Дорогая, шути, улыбайся,<br>
+                Не буди только память во мне<br>
+                Про волнистую рожь при луне.<br>
+
+                Шаганэ ты моя, Шаганэ!<br>
+                Там, на севере, девушка тоже,<br>
+                На тебя она страшно похожа,<br>
+                Может, думает обо мне…<br>
+                Шаганэ ты моя, Шаганэ.<br>
             </div>
         </div>
     </main>

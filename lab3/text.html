@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная работа 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+    .text {
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 1s ease-in-out 1.2s, max-height 1.5s ease-in-out 1.5s;
+        max-height: 0;
+    }
+    .block1 {
+        color: rgb(232, 101, 101);
+        background-color: rgb(152, 209, 177);
+        border: 5px solid rgba(217, 149, 228, 0.785);
+        border-radius: 15px;
+        width: 60%;
+        max-height: 70px;
+        margin: 20px auto;
+        box-shadow: 10px 10px 15px rgba(176, 176, 238, 0.721);
+        padding: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        font-family: Georgia;
+        transition: max-height 1.5s ease-in-out 1s, background-color 1.2s ease-in-out, border-radius 1s ease-in-out;
+    }
+    .block1:hover {
+        background-color: rgb(77, 118, 157);
+        max-height: 500px;
+        border-radius: 35px;
+        color: gold;
+        box-shadow: 10px 10px 15px rgba(237, 223, 110, 0.783);
+        transition: height 1.5s ease-in-out 2s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out;
+    }
+
+    .block1:hover .text {
+        opacity: 1;
+        transition: opacity 1s ease-in-out 2s, max-height 2s ease-in-out;
+        max-height: 500px;
+    }
+    h1 {
+        padding: 20px;
+        font-size: 28pt;
+        margin: 0;
+    }
+
+    .block2 {
+        color: rgb(255, 255, 255);
+        background-color: rgb(120, 94, 161);
+        border: 5px solid rgba(250, 200, 88, 0.9);
+        border-radius: 20px;
+        width: 60%;
+        max-height: 80px;
+        margin: 20px auto;
+        box-shadow: 10px 10px 20px rgba(88, 120, 250, 0.6);
+        padding: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        font-family: "Times New Roman";
+        transition: max-height 1.5s ease-in-out 1s, background-color 1.2s ease-in-out, border-radius 1s ease-in-out;
+    }
+    .block2:hover {
+        background-color: rgb(218, 140, 60);
+        max-height: 600px;
+        border-radius: 40px;
+        color: black;
+        box-shadow: 10px 10px 20px rgba(250, 200, 88, 0.8);
+        transition: max-height 1.5s ease-in-out 1.8s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out;
+    }
+    .block2:hover .text {
+        opacity: 1;
+        max-height: 600px;
+        transition: opacity 1s ease-in-out 2s, max-height 1.5s ease-in-out;
+    }
+
+    .block3 {
+        color: rgb(0, 74, 79);
+        background-color: rgb(242, 235, 193);
+        border: 5px dashed rgba(229, 86, 86, 0.9);
+        border-radius: 25px;
+        width: 60%;
+        max-height: 70px;
+        margin: 20px auto;
+        box-shadow: 5px 5px 20px rgba(95, 158, 160, 0.7);
+        padding: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        font-family: "Arial";
+        transition: max-height 1.5s ease-in-out 1s, background-color 1.2s ease-in-out, border-radius 1s ease-in-out;
+    }
+    .block3:hover {
+        background-color: rgb(223, 179, 243);
+        max-height: 500px;
+        border-radius: 50px;
+        color: rgb(22, 24, 110);
+        box-shadow: 5px 5px 20px rgba(144, 207, 238, 0.7);
+        transition: max-height 1.5s ease-in-out 1.2s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out;
+    }
+    .block3:hover .text {
+        opacity: 1;
+        max-height: 500px;
+        transition: opacity 1s ease-in-out 2s, max-height 1.8s ease-in-out;
+    }
+
+    .block4 {
+        color: white;
+        background-color: rgb(51, 51, 51);
+        border: 4px solid rgba(200, 200, 200, 0.8);
+        border-radius: 10px;
+        width: 60%;
+        max-height: 70px;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        font-family: "Courier New";
+        transition: max-height 1.5s ease-in-out 1s, background-color 1.2s ease-in-out, border-radius 1s ease-in-out;
+    }
+    .block4:hover {
+        background-color: rgb(34, 34, 34);
+        max-height: 500px;
+        border-radius: 30px;
+        color: rgb(255, 215, 0);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        transition: max-height 2s ease-in-out 1.8s, background-color 1.3s ease-in-out, border-radius 1s ease-in-out;
+    }
+    
+    .block4:hover .text {
+        opacity: 1;
+        max-height: 500px;
+        transition: opacity 1s ease-in-out 2s, max-height 2s ease-in-out;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 3
+    </header>
+
+    <main>
+        <div class="block1">
+            <h1>Бесы</h1>
+            <div class="text">
+                Есть дружбы странные: оба друга один другого почти съесть хотят, всю жизнь так живут, а между тем расстаться не могут.
+                Расстаться даже никак нельзя: раскапризившийся и разорвавший связь друг первый же заболеет и, пожалуй, умрет, 
+                если это случится. Я положительно знаю, что Степан Трофимович несколько раз, и иногда после самых интимных 
+                излияний глаз на глаз с Варварой Петровной, по уходе ее вдруг вскакивал с дивана и начинал колотить кулаками в стену.
+                Происходило это без малейшей аллегории, так даже, что однажды отбил от стены штукатурку. 
+                Может быть, спросят: как мог я узнать такую тонкую подробность? А что, если я сам бывал свидетелем? 
+                Что, если сам Степан Трофимович неоднократно рыдал на моем плече, в ярких красках рисуя предо мной всю свою подноготную? 
+                (И уж чего-чего при этом не говорил!). Но вот что случалось почти всегда после этих рыданий: назавтра он уже готов был 
+                распять самого себя за неблагодарность; поспешно призывал меня к себе или прибегал ко мне сам, единственно чтобы 
+                возвестить мне, что Варвара Петровна «ангел чести и деликатности, а он совершенно противоположное». 
+                Он не только ко мне прибегал, но неоднократно описывал всё это ей самой в красноречивейших письмах и признавался ей, 
+                за своею полною подписью, что не далее как, например, вчера он рассказывал постороннему лицу, 
+                что она держит его из тщеславия, завидует его учености и талантам; ненавидит его и боится только выказать свою ненависть явно, 
+                в страхе, чтоб он не ушел от нее и тем не повредил ее литературной репутации; что вследствие этого он себя презирает и 
+                решился погибнуть насильственною смертью, а от нее ждет последнего слова, которое всё решит, и пр., и пр., всё в этом роде.
+            </div>
+        </div>
+
+        <div class="block2">
+            <h1>Горе от ума</h1>
+            <div class="text">
+                А судьи кто? – За древностию лет<br>
+                К свободной жизни их вражда непримирима,<br>
+                Сужденья черпают из забытых газет<br>
+                Времён Очаковских и покоренья Крыма;<br>
+                Всегда готовые к журьбе,<br>
+                Поют все песнь одну и ту же,<br>
+                Не замечая об себе:<br>
+                Что старее, то хуже.<br>
+                Где? укажите нам, отечества отцы,<br>
+                Которых мы должны принять за образцы?<br>
+                Не эти ли, грабительством богаты?<br>
+                Защиту от суда в друзьях нашли, в родстве,<br>
+                Великолепные соорудя палаты,<br>
+                Где разливаются в пирах и мотовстве,<br>
+                И где не воскресят клиенты-иностранцы<br>
+                Прошедшего житья подлейшие черты.<br>
+                Да и кому в Москве не зажимали рты<br>
+                Обеды, ужины и танцы?<br>
+                Не тот ли, вы к кому меня ещё с пелен,<br>
+                Для замыслов каких-то непонятных,<br>
+                Дитёй возили на поклон?<br>
+                Тот Нестор негодяев знатных,<br>
+                Толпою окружённый слуг;<br>
+                Усердствуя, они в часы вина и драки<br>
+                И честь, и жизнь его не раз спасали: вдруг<br>
+                На них он выменял борзые три собаки!!!<br>
+            </div>
+        </div>
+
+        <div class="block3">
+            <h1>Три товарища</h1>
+            <div>
+                Она боялась последнего часа перед рассветом. Она была уверена, что
+                тайный поток жизни становится слабее и почти угасает именно в этот
+                последний час ночи. И только этого часа она боялась и не хотела
+                оставаться одна. В другое время она была такой храброй, что я не раз
+                стискивал зубы, глядя на нее.
+                Свою кровать я перенес в ее комнату и подсаживался к Пат каждый
+                раз, когда она просыпалась и в ее глазах возникала отчаянная
+                мольба. Часто думал я об ампулах морфия в моем чемодане; я пустил
+                бы их в ход без колебаний, если бы не видел, с какой благодарной
+                радостью встречает Пат каждый новый день.
+                Сидя у ее постели, я рассказывал ей обо всем, что приходило в
+                голову. Ей нельзя было много разговаривать, и она охотно слушала,
+                когда я рассказывал о разных случаях из моей жизни. Больше всего
+                ей нравились истории из моей школьной жизни, и не раз бывало, что,
+                едва оправившись от приступа, бледная, разбитая, откинувшись на
+                подушки, она уже требовала, чтобы я изобразил ей кого-нибудь из
+                моих учителей. Размахивая руками, сопя и поглаживая воображаемую
+                рыжую бороду, я расхаживал по комнате и скрипучим голосом изрекал
+                всякую педагогическую премудрость.
+            </div>
+        </div>
+
+        <div class="block4">
+            <h1>Шаганэ ты моя, Шаганэ</h1>
+            <div>
+                Шаганэ ты моя, Шаганэ!<br>
+                Потому, что я с севера, что ли,<br>
+                Я готов рассказать тебе поле,<br>
+                Про волнистую рожь при луне.<br>
+                Шаганэ ты моя, Шаганэ.<br>
+
+                Потому, что я с севера, что ли,<br>
+                Что луна там огромней в сто раз,<br>
+                Как бы ни был красив Шираз,<br>
+                Он не лучше рязанских раздолий.<br>
+                Потому, что я с севера, что ли.<br>
+
+                Я готов рассказать тебе поле,<br>
+                Эти волосы взял я у ржи,<br>
+                Если хочешь, на палец вяжи —<br>
+                Я нисколько не чувствую боли.<br>
+                Я готов рассказать тебе поле.<br>
+
+                Про волнистую рожь при луне<br>
+                По кудрям ты моим догадайся.<br>
+                Дорогая, шути, улыбайся,<br>
+                Не буди только память во мне<br>
+                Про волнистую рожь при луне.<br>
+
+                Шаганэ ты моя, Шаганэ!<br>
+                Там, на севере, девушка тоже,<br>
+                На тебя она страшно похожа,<br>
+                Может, думает обо мне…<br>
+                Шаганэ ты моя, Шаганэ.<br>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

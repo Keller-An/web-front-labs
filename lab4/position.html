@@ -36,6 +36,18 @@
         .position-absolute {
             position: absolute;
             left: 300px;
+            z-index: 1;
+        }
+        .position-absolute:hover {
+            position: absolute;
+            z-index: 100;
+            width: 300px;
+            height: 100px;
+            background-color: darksalmon;
+            color: black;
+            border: 3px dotted red;
+            box-shadow: 10px 10px 10px rgba(62, 217, 140, 0.6);
+            text-align: center;
         }
     </style>
 </head>
@@ -50,7 +62,7 @@
         <div class="position-relative">relative</div>
         <div>static</div>
         <div>static</div>
-        <div class="position-absolute">static</div>
+        <div class="position-absolute">absolute</div>
         <div>static</div>
         <div>static</div>
         <div>static</div>

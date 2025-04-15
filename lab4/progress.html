@@ -9,14 +9,22 @@
     <link rel="icon" href="../favicon-32x32.png">
     <link rel="icon" href="../favicon-16x16.png">
     <style>
+        main {
+            display: flex;
+            height: 70vh;
+            align-items: center;
+            justify-content: center;
+        }
         .container {
-            width: 300px;
-             margin: 100px auto;
-             border: 2px solid #eb0d0d;
-             padding: 20px;
-             border-radius: 10px;
-             text-align: center;
-             background: linear-gradient(to right top, rgba(112, 243, 232, 0.761), rgb(127, 127, 223), rgba(216, 66, 235, 0.704)); 
+            width: 400px;
+            height: 150px;
+            margin: 100px auto;
+            border: 2px solid #eb0d0d;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(to right top, rgba(112, 243, 232, 0.761), rgb(127, 127, 223), rgba(216, 66, 235, 0.704)); 
         }
         .text {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -26,25 +34,26 @@
             text-shadow: 3px 3px 5px rgba(253, 225, 66, 0.796);
         }
         .progress {
-             width: 95%;
+             width: 300px;
              height: 20px;
-             margin: 10 px auto;
+             margin: 10px auto;
              border: 2px solid #a63232;
              border-radius: 4px;
-             margin-top: 10px;
-             padding: 0;
-             margin-bottom: 10px;
+             overflow: hidden;
+             position: relative;
              background-color: rgba(255, 255, 255, 0.3)
          }
          .progress-box {
-            width: 0%;
+            width: 0;
             height: 100%;
             background: linear-gradient(to right top, rgba(112, 119, 243, 0.761), rgb(243, 122, 122), rgba(105, 3, 118, 0.704));
             border-radius: 4px;
-            animation: none;
+            transition: width 5s linear;
          }
          .button {
             padding: 10px 20px;
+            margin: 10px auto;
+            position: relative;
             color: azure;
             background-color: blueviolet;
             font-size: 10pt;
@@ -60,17 +69,11 @@
          .button:active {
             box-shadow: none;
          }
-         .container:has(.button:active) .progress-box {
-            animation: fillProgress 5s linear forwards;
+         .container:has(.button:active) .progress .progress-box {
+            width: 100%;
          }
-         @keyframes fillProgress {
-            from {
-                width: 0%;
-            }
-            to {
-                width: 100%;
-            }
-         }
+         
+        
     </style>
 
 </head>
@@ -82,11 +85,11 @@
     <main>
         <div class="container">
             <div class="text">Степень прогресса</div>
-                <div class="progress">
-                    <div class="progress-box"></div>
-                </div>
-                <button class="button">Нажмите и удерживайте</button>
-        </div>
+            <div class="progress">
+                <div class="progress-box"></div>
+            </div>
+            <button class="button">Нажмите и удерживайте</button>
+            </div>
     </main>
 
     <footer>

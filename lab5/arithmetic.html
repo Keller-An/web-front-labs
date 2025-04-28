@@ -79,6 +79,45 @@
             alert(a + ' / ' + b + ' = ' + result);
         }
 
+        function showPower() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+
+            if (isNaN(a)) {
+                alert('Введите числовое значение в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+
+            if(isNaN(b)) {
+                alert('Введите числовое значение во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+
+            inputB.style.color ='';
+            inputB.style.borderColor = '';
+            inputA.style.color ='';
+            inputA.style.borderColor = '';
+
+            if (a==0 && b==0) {
+                alert('Нельзя возвести 0 встепень 0!');
+                return;
+            }
+
+            let result= Math.pow(a,b);
+            alert(a + ' в степени ' + b + ' равно ' + result);
+        }
+
         function showAuthor() {
             let author = 'Автор страницы: \nМахмадбекова Анастасия Эргашевна';
             alert(author);
@@ -119,6 +158,7 @@
         <div class="message" onclick="showDiff()">Найти разность чисел</div>
         <div class="message" onclick="showProd()">Найти произведение чисел</div>
         <div class="message" onclick="showDiv()">Найти отношение чисел</div>
+        <div class="message" onclick="showPower()">Возвести в степень</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
 

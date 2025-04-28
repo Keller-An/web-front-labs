@@ -127,6 +127,15 @@
             let text = 'Тёмная ночь... только пули свистят по степи, \nТолько ветер гудит в проводах, тускло звёзды мерцают.';
             alert(text);
         }
+        function changeOutput(buttonNum, backColor, textColor, borderStyle, brRadius, brWidth) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+            output.style.borderStyle = borderStyle;
+            output.style.borderRadius = brRadius;
+            output.style.borderWidth = brWidth;
+        }
     </script>
     <style>
         .message {
@@ -144,6 +153,13 @@
         .text {
             cursor: wait;
         }
+
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
+
     </style>
 </head>
 <body>
@@ -160,6 +176,14 @@
         <div class="message" onclick="showDiv()">Найти отношение чисел</div>
         <div class="message" onclick="showPower()">Возвести в степень</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'yellow', 'red', 'solid', '15px', '5px')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime', 'dotted', '10px', '10px')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'green', 'black', 'double', '20px', '5px')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'pink', 'blue', 'dashed', '15px', '15px')">
+        </div>
+        <div id="output"></div>
     </main>
 
     <footer class="text" ondblclick="showText()">

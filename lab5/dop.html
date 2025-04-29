@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script>
+        const img = document.getElementById('image');
+        const info = document.getElementById('info');
+
+        img.addEventListener('mousemove', (event) => {
+            const rect = img.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const percent = Math.min(Math.max(x / rect.width, 0), 1); 
+        })
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <img src="IMG1.jpg" id="image">
+        <div id="info"></div>
+        <div id="help">
+            Наведите курсор мыши на изображение слева направо - применяется фильтр grayscale<br>
+            Удершивайте клавишу Ctr - применяется фильтр blur<br>
+            Удершивайте клавишу Alt - применяется фильтр contrast<br>
+            Удершивайте клавишу Shift - применяется фильтр hue-rotate<br>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

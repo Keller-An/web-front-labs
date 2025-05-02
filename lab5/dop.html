@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        img {
+           display: block;
+            transition: filter 0.3s;
+            cursor: pointer;
+        }
+        #info {
+            font-size: 18pt;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            padding: 10px;
+        }
+        #help {
+            font-size: 18pt;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+        #image {
+            border: 5px solid saddlebrown;
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <script>
+        
+        function Filter(event) {
+            const image = document.getElementById('image');
+            const info = document.getElementById('info');
+
+            const rect = image.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            let percent = x / rect.width;
+            percent = Math.max(0, Math.min(1, percent));
+
+            let filter = "";
+            let filterText = "";
+
+
+            if (event.ctrlKey) {
+                const blur = (percent * 10).toFixed(1);
+                filter = `blur(${blur}px)`;
+                filterText = `blur(${blur}px)`;
+            } else if (event.altKey) {
+                const contrast = (percent * 200).toFixed(0);
+                filter = `contrast(${contrast}%)`;
+                filterText = `contrast(${contrast}%)`;
+            } else if (event.shiftKey) {
+                const hue = (percent * 360).toFixed(0);
+                filter = `hue-rotate(${hue}deg)`;
+                filterText = `hue-rotate(${hue}deg)`;
+            } else {
+                const gray = (percent * 100).toFixed(0);
+                filter = `grayscale(${gray}%)`;
+                filterText = `grayscale(${gray}%)`;
+            }
+
+            image.style.filter = filter;
+            info.textContent = "Фильтр: " + filterText;
+        }
+
+        function resetFilter() {
+            const image = document.getElementById('image');
+            const info = document.getElementById('info');
+            image.style.filter = "none";
+            info.textContent = "Фильтр: grayscale(0%)";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <img src="IMG1.jpg" id="image" onmousemove="Filter(event)" onmouseout="resetFilter()">
+        <div id="info"></div>
+        <div id="help">
+            Наведите курсор мыши на изображение слева направо - применяется фильтр grayscale<br>
+            Удершивайте клавишу Ctr - применяется фильтр blur<br>
+            Удершивайте клавишу Alt - применяется фильтр contrast<br>
+            Удершивайте клавишу Shift - применяется фильтр hue-rotate<br>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

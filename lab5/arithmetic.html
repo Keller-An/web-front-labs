@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +11,111 @@
     <link rel="icon" href="../favicon-16x16.png">
     <script>
         function showSum() {
-            let numberA = document.getElementById('numberA');
-            let numberB = document.getElementById('numberB');
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
 
-            let a = inputA.value;
-            let b = inputB.value;
-            let result = a + b;
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a+b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showDiff() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a-b;
+            alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function showProd() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a*b;
+            alert('Произведение ' + a + ' и ' + b + ' равно ' + result);
+        }
+        function showDiv() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            if (b==0) {
+                alert('На 0 делить нельзя!');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color ='red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+
+            if(isNaN(a)) {
+                alert('Введите числовое значение в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+
+            if(isNaN(b)) {
+                alert('Введите числовое значение во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+
+            inputB.style.color ='';
+            inputB.style.borderColor = '';
+            inputA.style.color ='';
+            inputA.style.borderColor = '';
+
+            let result = a/b;
+            alert(a + ' / ' + b + ' = ' + result);
+        }
+
+        function showPower() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+
+            if (isNaN(a)) {
+                alert('Введите числовое значение в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+
+            if(isNaN(b)) {
+                alert('Введите числовое значение во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+
+            inputB.style.color ='';
+            inputB.style.borderColor = '';
+            inputA.style.color ='';
+            inputA.style.borderColor = '';
+
+            if (a==0 && b==0) {
+                alert('Нельзя возвести 0 встепень 0!');
+                return;
+            }
+
+            let result= Math.pow(a,b);
+            alert(a + ' в степени ' + b + ' равно ' + result);
         }
 
         function showAuthor() {
@@ -28,6 +126,15 @@
         function showText() {
             let text = 'Тёмная ночь... только пули свистят по степи, \nТолько ветер гудит в проводах, тускло звёзды мерцают.';
             alert(text);
+        }
+        function changeOutput(buttonNum, backColor, textColor, borderStyle, brRadius, brWidth) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+            output.style.borderStyle = borderStyle;
+            output.style.borderRadius = brRadius;
+            output.style.borderWidth = brWidth;
         }
     </script>
     <style>
@@ -46,6 +153,13 @@
         .text {
             cursor: wait;
         }
+
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
+
     </style>
 </head>
 <body>
@@ -56,8 +170,20 @@
     <main>
         <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
         <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
-        <div class="message" onclick="showSum()">Сколько будет 5154+7891?</div>
+        <div class="message" onclick="showSum()">Найти сумму чисел</div>
+        <div class="message" onclick="showDiff()">Найти разность чисел</div>
+        <div class="message" onclick="showProd()">Найти произведение чисел</div>
+        <div class="message" onclick="showDiv()">Найти отношение чисел</div>
+        <div class="message" onclick="showPower()">Возвести в степень</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'yellow', 'red', 'solid', '15px', '5px')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime', 'dotted', '10px', '10px')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'green', 'black', 'double', '20px', '5px')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'pink', 'blue', 'dashed', '15px', '15px')">
+        </div>
+        <div id="output"></div>
     </main>
 
     <footer class="text" ondblclick="showText()">

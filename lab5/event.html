@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script>
+        function showCoords() {
+            let x = this.event.x;
+            let y = this.event.y;
+            let div = document.getElementById('block');
+            let message = '<b>x</b> = ' + x + 'px<br><b>y</b> = ' + y + 'px';
+            div.style.color = 'black';
+            div.style.width = '200px';
+            div.style.height = '200px';
+            div.style.backgroundColor = 'rgb(131, 214, 186)'
+
+            if(this.event.ctrlKey) {
+                message += '<br> Нажата клавиша Ctrl';
+                div.style.color = 'red';
+            }
+            if (this.event.altKey) {
+                message += '<br> Нажата клавиша Alt';
+                div.style.color = 'green';
+                div.style.backgroundColor = '#8e7cc3';
+                div.style.width = '300px';
+                div.style.height = '300px';
+            }
+            if(this.event.shiftKey) {
+                message += '<br> Нажата клавиша Shift';
+                div.style.color = '993366';
+                div.style.backgroundColor = '#FF8811';
+                div.style.width = '150px';
+                div.style.height = '150px';
+                div.style.border = '8px solid red'
+            }
+            div.innerHTML = message;
+        }
+    </script>
+    <style>
+        #block {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(131, 214, 186);
+            border: 2px solid pink;
+            border-radius: 0px;cursor: crosshair;
+            font-size: 20pt;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <div id="block" onmousemove="showCoords()"></div>
+    </main>
+
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

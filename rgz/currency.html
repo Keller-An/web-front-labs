@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Расчетно-графическое задание</title>
+    <link rel="stylesheet" href="../styleRGZ.css">
+    <link rel="shortcut icon" href="../faviconRGZ.ico" type="image/x-icon">
+    <link rel="icon" href="../faviconRGZ-32x32.png">
+    <link rel="icon" href="../faviconRGZ-16x16.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const apiDaily = 'https://www.cbr-xml-daily.ru/daily_json.js';
+        let currentRate = 0;
+        let chart;
+
+        async function fetchCurrentRate() {
+            const responce = await fetch(apiDaily);
+            const data = await responce.json();
+            currentRate = data.Valute.KGS.Value;
+            console.log("Курс KGS:", currentRate);
+
+        }
+
+        async function convertToCurrency() {
+            await fetchCurrentRate();
+            const rub = parseFloat(document.getElementById('amountRub').value);
+            if (!isNaN(rub) && rub >= 0) {
+                const result = rub * (1 / currentRate)*100;
+                document.getElementById('result').innerText = `${rub} RUB ≈ ${result.toFixed(2)} KGS`;
+            } else {
+                alert("Пожалуйста, введите подходящее для конвертации число.");
+            }
+        }
+
+        async function convertToRub() {
+            await fetchCurrentRate();
+            const kgs = parseFloat(document.getElementById('amountCurrency').value);
+            if (!isNaN(kgs) && kgs >= 0) {
+                const result = (kgs * currentRate)/100;
+                document.getElementById('result').innerText = `${kgs} KGS ≈ ${result.toFixed(2)} RUB`;
+            } else {
+                alert("Пожалуйста, введите подходящее для конвертации число.");
+            }
+        }
+
+        async function fetchHistoricalData() {
+            const today = new Date();
+            const dates = [];
+            const rates = [];
+
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(today.getDate() - i);
+                const yyyy = date.getFullYear();
+                const mm = String(date.getMonth() + 1).padStart(2, '0');
+                const dd = String(date.getDate()).padStart(2, '0');
+                const url = `https://www.cbr-xml-daily.ru/archive/${yyyy}/${mm}/${dd}/daily_json.js`;
+
+                try {
+                    const res = await fetch(url);
+                    if (res.ok) {
+                        const data = await res.json();
+                        const rate = (data.Valute.KGS.Value).toFixed(4);
+                        dates.push(`${dd}.${mm}`);
+                        rates.push(rate);
+                    }
+                } catch {
+
+                }
+            }
+            return {dates, rates};
+        }
+                async function drawChart() {
+            const data = await fetchHistoricalData();
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(100, 200, 100, 0.6)'); 
+            gradient.addColorStop(1, 'rgba(50, 120, 50, 0.2)'); 
+
+            if (chart) chart.destroy();
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.dates,
+                    datasets: [{
+                        label: 'Курс KGS',
+                        data: data.rates,
+                        backgroundColor: gradient,
+                        borderColor: 'rgba(60, 140, 60, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    onClick: (evt, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            document.getElementById('chartInfo').innerText = `Дата: ${data.dates[index]}, Курс: ${data.rates[index]}`;
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Курс (RUB/KGS)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Дата'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        fetchCurrentRate();
+        drawChart();
+    </script>
+
+    <style>
+    
+        .currency-container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.221);
+            justify-content: center;
+            
+        }
+        .converter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            width: 100%;
+            max-width: 350px;
+            font-size: 14pt;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .converter input {
+            padding: 12px 40px 12px 45px;
+            width: 100%;
+            font-size: 14pt;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+        }
+        .converter button {
+            background-color:rgb(75, 148, 75);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+        }
+        .converter button:hover {
+            background-color: #3a7d3a;
+        }
+        .result {
+            font-size: 15pt;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .chart-info {
+            text-align: center;
+            margin: 10px 0;
+            color: #1e1e1e;
+            font-weight: bold;
+            font-size: 12pt;
+        }
+        canvas {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        h2, h3 {
+            color: #1e1e1e;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+                <a href="company.html" class="active">О компании</a>
+                <a href="news.html">Новости</a>
+                <a href="currency.html">Курс валют</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="video.html">Видео</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="currency-container">
+            <h2>Конвертирование валют (RUB ↔ KGS)</h2>
+            <div class="converter">
+                <input type="number" id="amountRub" placeholder="Введите сумму в рублях" autocomplete="off" min="0">
+                <button onclick="convertToCurrency()">В KGS</button>
+                <input type="number" id="amountCurrency" placeholder="Введите сумму в сомах" autocomplete="off" min="0">
+                <button onclick="convertToRub()">В RUB</button>
+                <p class="result" id="result"></p>
+            </div>
+            <h3>Курс KGS за последние 30 дней</h3>
+            <div class="chart-container">
+                <canvas id="myChart" width="600" height="400"></canvas>
+                <div class="chart-info" id="chartInfo">Кликните на столбец, чтобы увидеть дату и курс валюты</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 РБК</p>
+        </div>
+    </footer>
+    
+   
+</body>
+</html>

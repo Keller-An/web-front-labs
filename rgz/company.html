@@ -6,85 +6,105 @@
     <title>Махмадбекова Анастасия Эргашевна. Расчетно-графическое задание</title>
     <link rel="stylesheet" href="../styleRGZ.css">
     <style>
-        body {
-      margin: 0;
-      padding: 20px;
-      background-color: #f3f4f6;
-      min-height: 100vh;
-    }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      gap: 20px;
-    }
+        .founders {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
 
-    .cardR {
-      background-color: white;
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      flex: 1;
-      margin: 0 auto 300px auto;
-      margin-right: 40px;
-      margin-top: 90px;
-    }
-    .cardR:hover {
-        background-color: #71b88e;
-        transform: scale(1.2);
-    }
-    .cardL:hover {
-        background-color: #71b88e;
-        transform: scale(1.2);
-    }
-    .cardL {
-      background-color: white;
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      flex: 1;
-      margin: 0 auto 300px auto;
-      margin-left: 40px;
-      margin-top: 90px;
-    }
+        .card {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            padding: 12px;
+            width: 160px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+        .wide {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 40px auto;
+        }
+        .rbc-intro {
+            margin-top: 10px;
+            font-family: sans-serif;
+        }
+        .line {
+            font-size: 40px;
+            font-weight: bold;
+            margin: 0;
+            opacity: 0;
+            margin-top: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-out;
+        }
+        .line1 {
+            margin-left: 190px;
+        }
+        .line2 {
+            margin-left: 240px;
+            color: #0c717b;
+        }
+        .line3 {
+            margin-left: 340px;
+            color: #71b88e;
+        }
+
+        @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
     </style>
 </head>
 <body>
-    <header class="navbar">
+    <header>
         <nav>
-            <ul>
-                <li><a href="company.html" class="active">О компании</a></li>
-                <li><a href="news.html">Новости</a></li>
-                <li><a href="currency.html">Курс валют</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-                <li><a href="video.html">Видео</a></li>
-            </ul>
+            
+                <a href="company.html" class="active">О компании</a>
+                <a href="news.html">Новости</a>
+                <a href="currency.html">Курс валют</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="video.html">Видео</a>
+            
         </nav>
     </header>
-    <div class="page-container">
-        <div class="container">
-            <div class="cardR">
-                <img src="H1.png" alt="Основатель РБК (1)">
-                <p>Дмитрий Анатольевич Белик</p>
-            </div>
-            <div class="cardR">
-                <img src="H2.png" alt="Основатель РБК (2)">
-                <p>Михаил Леонидович Гуревич</p>
-            </div>
-            <div class="cardR">
-                <img src="H3.png" alt="Основатель РБК (3)">
-                <p>Артём Вячеславович Инютин</p>
-            </div>
-        </div>
     
     <main class="content">
-        <section class="screen">
-            <h1>О компании <span style="color: #2e8b57;">РБК</span></h1>
-            <p><b>РосБизнесКонсалтинг (РБК)</b> — группа компаний и один из крупнейших мультимедийных холдингов России, специализирующиеся на <i>деловой информации</i>, <i>аналитике</i>, а также цифровых услугах для бизнеса.</p>
-            <img src="rbc.jpg" alt="Логотип РБК" class="logo">
+        <section class="section">
+            <section class="rbc-intro">
+                <h1 class="line line1 fade-in">Рос</h1>
+                <h1 class="line line2 fade-in">Бизнес</h1>
+                <h1 class="line line3 fade-in">Консалтинг</h1>
+            </section>
+            <h1 style="text-align: center;">О компании <span style="color: rgb(75, 148, 75);">РБК</span></h1>
+            <p><strong>РосБизнесКонсалтинг (РБК)</strong> — группа компаний и один из крупнейших мультимедийных холдингов России, специализирующиеся на <i>деловой информации</i>, <i>аналитике</i>, а также цифровых услугах для бизнеса.</p>
+            <img src="rbc.jpg" alt="Логотип РБК" class="wide fade-in">
             <p>РБК была основана <b>17 июня 1993 года</b> в городе Москве, и с тех пор развилась в мультипратформенную структуру, включающую:</p>
             <ul>
                 <li>РБК ТВ - российский бизнес-телеканал</li>
@@ -95,20 +115,42 @@
             <p>РБК представляет собой многоплатформенную экосистему, предлагающую пользователям разнообразный контент и сервисы, 
             ориентированные на различные тематические вертикали.</p>
             <p><u>Основателями информационного агентства РБК являются</u> Дмитрий Белик, Михаил Гуревич, Артём Инютин, Герман Каплун и Александр Моргульчик </p>
+            <section class="founders">
+                <div class="card">
+                    <img src="H1.png" alt="Белик" />
+                    <p>Дмитрий Белик</p>
+                </div>
+                <div class="card">
+                    <img src="H2.png" alt="Гуревич" />
+                    <p>Михаил Гуревич</p>
+                </div>
+                <div class="card">
+                    <img src="H3.png" alt="Инютин" />
+                    <p>Артём Инютин</p>
+                </div>
+                <div class="card">
+                    <img src="H4.png" alt="Каплун" />
+                    <p>Герман Каплун</p>
+                </div>
+                <div class="card">
+                    <img src="H5.webp" alt="Моргульчик" />
+                    <p>Александр Моргульчик</p>
+                </div>
+            </section>
             <p>Официальный сайт компании РБК: <a href="https://www.rbc.ru/" target="_blank">www.rbc.ru</a></p>
         </section>
 
-        <section class="screen">
+        <section class="section" id="history">
             <h2>История развития компании</h2>
             <p>В 1993 году РБК выпускал печатные информационно-аналитические биллютени и смогло <u>укрпиться на медиарынке</u> за счет того, что стало первопроходцем в интернете</p>
             <p>В 2002 году компания объявила о запуске телеканала "РБК ТВ" и своего хостинг центра. В следующем году вышли в свет электронная газета <u>«РБК-Daily»</u> и первая в Рунете рекламная коммерческая сеть <u>AdNet.ru</u>.
             Экономический кризис 2008 года принес РБК потери, хотя в его преддверии бренд компании был оценен Interbrand в 215 млн долларов 
             – РБК занял 22 позицию в рейтинге «Самые ценные российские бренды».Общий долг на конец августа 2009 года оценивался кредиторами компании в 207 млн долларов.</p>
-            <img src="rbcTV.webp" alt="РБК ТВ" class="wide">
+            <img src="rbcTV.webp" alt="РБК ТВ" class="wide fade-in">
             <p>После экономического кризиса и большого долга компании, в 2010 году группа <b>"ОНЭКСИМ"</b> Михаила Прохорова выкупила 51% акций компании РБК, что стало новым этапом трансформации</p>
         </section>
 
-        <section class="screen">
+        <section class="screen" id="structure">
             <h2>Современная структура компании РБК</h2>
             <p>На сегодняшний момент, медиахолдинг <b>РБК</b> — это не только медиа, но и <i>технологическая платформа</i>
             для предпринимателей и инвесторов. РБК с 2015 года активно внедрял в свою инфраструктуру новые медиапроекты, например:</p>
@@ -123,20 +165,36 @@
             <p>Компания также активно внедряет аналитику больших данных и разрабатывает цифровые решения для B2B-сегмента. Компания насчитывает более 1500 сотрудников, а штабы РБК расположены во многих крупных городах России</p>
             <p>В 2019 году чистая прибыль группы компаний РБК составила <b>3,611 млрд руб</b>, а уже в 2020 году аудитория РБК достигла <i>рекордных значений</i>.
             Самым посещаемым месяцем стал апрель, когда аудитория интернет-проектов РБК выросла на 124 % по сравнению с аналогичным периодом 2019 года.</p>
-            <img src="rbcOffice.webp" alt="Офис РБК" class="wide">
+            <img src="rbcOffice.webp" alt="Офис РБК" class="wide fade-in">
         </section>
+        
     </main>
-    <div class="container">
-        <div class="cardL">
-            <img src="H4.png" alt="Основатель РБК (4)">
-            <p>Каплун Герман Владимирович</p>
-        </div>
-        <div class="cardL">
-            <img src="H5.webp" alt="Основатель РБК (5)">
-            <p>Александр Моисеевич Моргульчик</p>
-        </div>
-    </div>
     <a href="#" class="scroll-top">↑</a>
-    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 РБК.</p>
+        </div>
+    </footer>
+    <script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+</script>
 </body>
 </html>

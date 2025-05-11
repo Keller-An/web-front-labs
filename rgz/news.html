@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Расчетно-графическое задание</title>
+    <link rel="stylesheet" href="../styleRGZ.css">
+    <link rel="shortcut icon" href="../faviconRGZ.ico" type="image/x-icon">
+    <link rel="icon" href="../faviconRGZ-32x32.png">
+    <link rel="icon" href="../faviconRGZ-16x16.png">
+    <style>
+        
+        .news-container {
+            width: 80%;
+            margin: 30px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            
+        }
+        .news-card {
+            background-color: #fff;
+            padding: 10px;
+            width: 40%;
+            box-sizing: border-box;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.221);
+            transition: box-shadow 0.5s ease-in-out;
+            position: relative;
+        }
+        .news-card:hover {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.349);
+        }
+        .news-card button {
+            margin-top: 10px;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgb(75, 148, 75);
+            color: #fff;
+            cursor: pointer;
+            font-size: 10pt;
+            transition: background-color 0.5s ease;
+        }
+        .news-card button:hover {
+            background-color: #3a7d3a;
+        }
+        .news-card.active {
+            z-index: 10;
+            transform: scale(1.5);
+            transition: transform 0.5s ease, z-index 0s;
+        }
+        .news-card {
+            transition: transform 0.5s ease;
+        }
+        .news-header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .news-date {
+            font-size: 10pt;
+            color: #666;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        .news-title {
+            font-size: 14pt;
+            margin: 0;
+            text-align: right;
+        }
+        .read-more {
+            color: #4b944b;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        .go-back {
+            display: none;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+                <a href="company.html" class="active">О компании</a>
+                <a href="news.html">Новости</a>
+                <a href="currency.html">Курс валют</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="video.html">Видео</a>
+        </nav>
+    </header>
+
+    <main class="news-container">
+       <h1 style="text-align: center;">Популярные новости о компании РБК</h1>
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">12.04.2024</span>
+                <h2 class="news-title">Новая стратегия РБК</h2>
+            </div>
+                <p class="news-preview">
+                    РБК представил свою новую стратегию развития и внедрения новых технологий на 2025 год
+                </p>
+                <p class="news-full" style="display: none;">
+                    РБК представил свою новую стратегию на 2025 год. Компания намерена усилить позиции на рынке цифровых медиа, 
+                    расширить портфель цифровых продуктов и внедрить технологии ИИ в свои бизнес-сервисы. 
+                    Также планируется выход на международный рынок (стран СНГ).
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+            </div>
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">27.12.2024</span>
+                <h2 class="news-title">РБК расширяет присутствие на радийном рынке</h2>
+            </div>
+                <p class="news-preview">
+                    Одно из юридических лиц медиахолдинга РБК — АО «РБК онлайн» — в декабре стало владельцем ООО «Медиа новости»
+                </p>
+                <p class="news-full" style="display: none;">
+                    Одно из юридических лиц медиахолдинга РБК — АО «РБК онлайн» — в декабре стало владельцем ООО «Медиа новости» 
+                    (ему принадлежит радиочастота 107,4 FM в Нижнем Новгороде и Нижегородской области), ООО «Медиа лайт» 
+                    (101,1 FM в Воронеже и Воронежской области) и ООО «Медиа лайн» (100,6 FM в Тюмени и Тюменской области). 
+                    Об этом пишут «Ведомости». Также «РБК онлайн» в декабре купил 4% в ООО «Олимп», которому принадлежит 
+                    частота 92,8 FM в Москве и Московской области. В ноябре «РБК онлайн» стал владельцем ООО «Радио Рокс», 
+                    которое владеет частотой 102,0 FM в Санкт-Петербурге. Сумма сделок не раскрывается.
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+            </div>
+        
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">13.05.2023</span>
+                <h2 class="news-title">РБК повышает образование</h2>
+            </div>
+                <p class="news-preview">
+                    Проект образования в сфере IT ProductStar вошел в состав медиахолдинга РБК
+                </p>
+                <p class="news-full" style="display: none;">
+                    Проект образования в сфере IT ProductStar вошел в состав медиахолдинга РБК, 
+                    где по заявлению последнего будет развиваться на правах самостоятельного продукта. 
+                    Компания сможет стать для РБК, уже развивающего edtech-направление, источником дополнительного дохода.
+                    РБК приобрел образовательный сервис ProductStar у его основателей Михаила Карпова и Романа Абрамова, 
+                    свидетельствуют данные ЕГРЮЛ. Согласно выписке, 87% уставного капитала юрлица ProductStar (ООО «Тривиум») 
+                    перешли напрямую АО «Росбизнесконсалтинг», 13% — принадлежащему ему ООО «Синьюс.ру».
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+            </div>
+
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">16.06.2017</span>
+                <h2 class="news-title">Григорий Березкин купил РБК</h2>
+            </div>
+                <p class="news-preview">
+                    Сделка по продаже медиахолдинга РБК закрыта, актив перешел от Михаила Прохорова к Григорию Березкину.
+                </p>
+                <p class="news-full" style="display: none;">
+                    О том, что сделка закрыта, “Ъ” сообщила представитель ЕСН Григория Березкина Марианна Белоусова. 
+                    Подробности она не разглашает. Связаться с представителями ОНЭКСИМа пока не удалось.
+                    Основным предметом переговоров между структурами господина Березкина и ОНЭКСИМом было 
+                    урегулирование задолженности РБК, оценивающейся, по данным последней отчетности компании, 
+                    примерно в $277 млн. Как урегулирован этот вопрос, Марианна Белоусова не сообщила.
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+            </div>
+
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">12.03.2024</span>
+                <h2 class="news-title">В Новосибирске перестал частично вещать телеканал РБК</h2>
+            </div>
+                <p class="news-preview">
+                    В Новосибирске с 1 апреля прекратилось аналоговое вещание телеканала РБК.
+                </p>
+                <p class="news-full" style="display: none;">
+                    В Новосибирске отключили аналоговое вещание, осталось только кабельное. 
+                    Отключение произошло 1 апреля по решению головного офиса, — рассказали в новосибирском отделении РБК.
+                    В сетке вещания он располагался на 21 канале, а сейчас там ничего нет. 
+                    То, что отключили, заметил неделю назад, — пояснил мужчина. Ранее стало известно, 
+                    что в Новосибирской области с 14 апреля прервется теле- и радиосигнал.
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+        </div>
+
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">12.02.2022</span>
+                <h2 class="news-title">YouTube заблокировал РБК, ТАСС</h2>
+            </div>
+                <p class="news-preview">
+                    YouTube начал блокировку российских каналов. Под ограничения попали холдинг МИА «Россия сегодня», государственное агентство ТАСС, ВГТРК, «Первый канал», РБК
+                </p>
+                <p class="news-full" style="display: none;">
+                    Пресс-секретарь YouTube Фаршад Шадлу накануне, 11 марта, сообщил, что видеохостинг 
+                    приступил к немедленной блокировке каналов, связанных с российскими государственными СМИ.
+                    МИА «Россия сегодня» и ВГТРК — федеральные государственные унитарные предприятия. Под блокировку попали их каналы «РИА Новости», Sputnik, 
+                    Ruptly, «Россия 1», «Россия 24» и другие. «Москва 24» входит в холдинг «Москва Медиа», 
+                    созданный при поддержке мэрии столицы
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+        </div>
+
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">01.03.2022</span>
+                <h2 class="news-title">Сайт РБК подвергся усиленной DDoS-атаке</h2>
+            </div>
+                <p class="news-preview">
+                    Часть читателей РБК в настоящее время испытывают проблемы с доступом к сайту из-за DDoS-атаки.
+                <p class="news-full" style="display: none;">
+                    «Идет усиленная DDoS-атака, система регистрирует аномальный рост «черных» подключений. 
+                    Сайт в порядке, но на сетях фиксируется перегрузка, на уровне провайдеров идет фильтрация, 
+                    чтобы противостоять атаке», — заявил гендиректор РБК Николай Молибог.
+                    Накануне сайты РБК, ТАСС, газет «Известия» и «Коммерсантъ» подверглись взлому.
+                    Начиная с 25 февраля сайты РБК и других российских СМИ подвергаются DDoS-атакам. 
+                    В ходе таких атак хакеры направляют на сайт большое количество запросов, превышающих 
+                    пропускную способность сети, — это блокирует работу ресурса.
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+        </div>
+
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">13.05.2016</span>
+                <h2 class="news-title">Из РБК уволились ключевые руководители</h2>
+            </div>
+                <p class="news-preview">
+                    Без руководства остаются как объединенная редакция, так и все издания холдинга, за исключением телеканала РБК-ТВ
+                <p class="news-full" style="display: none;">
+                    РБК покидают шеф-редактор Елизавета Осетинская, главный редактор газеты РБК 
+                    Максим Солюс, а также главный редактор информационного агентства РБК Роман Баданин, 
+                    сообщил принадлежащий миллиардеру Михаилу Прохорову медиахолдинг днем 13 мая. 
+                    Сегодня — последний день их работы в холдинге, говорится в сообщении.
+                    Причиной увольнения стало расхождение во мнениях руководства холдинга по вопросам 
+                    о его развитии, приводятся в сообщении слова гендиректора РБК Николая Молибога. 
+                    В чем именно заключались эти разногласия и кто именно является инициатором увольнения, не говорится.
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+        </div>
+
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">31.07.2024</span>
+                <h2 class="news-title">Чистый убыток РБК в 1 полугодии 2024 г</h2>
+            </div>
+                <p class="news-preview">
+                    РБК публикует отчетность за 6 мес. 2024 г., составленную в соответствии с российскими стандартами бухгалтерского учета (РСБУ).
+                <p class="news-full" style="display: none;">
+                    Компания в отчетном периоде получила чистый убыток в размере -418.56 млн руб. 
+                    Об этом сообщается в промежуточной отчетности организации
+                    Кроме того, по данным отчетности активы компании составили 25.37 млрд руб. 
+                    по сравнению с 24.18 млрд руб. годом ранее. Внеоборотные активы РБК находятся 
+                    на уровне 11.1 млрд руб. Оборотные активы выросли на 92.54% до 14.27 млрд руб. 
+                    Капитал и резервы уменьшились на 23.44% до -3.88 млрд руб.. Долгосрочные обязательства 
+                    РБК согласно отчетности РСБУ сократились на 15.18%, достигнув уровня 22.42 млрд руб.
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+        </div>
+
+        <div class="news-card">
+            <div class="news-header">
+                <span class="news-date">05.07.2023</span>
+                <h2 class="news-title">РБК впервые проведет форум для инвесторов</h2>
+            </div>
+                <p class="news-preview">
+                    Форум «Capital markets: Россия» будет интересен как профессиональным финансовым менеджерам, так и частным инвесторам.
+                <p class="news-full" style="display: none;">
+                    РБК 6 сентября проведет свой первый форум о рынке капитала — «Capital markets: Россия». 
+                    Мероприятие предназначено как для институциональных игроков, во многом определяющих вектор 
+                    развития рынка, так и для частных инвесторов.Участники обсудят, что происходит сейчас на 
+                    рынке капитала, куда смещается интерес инвесторов и как геополитические изменения 
+                    влияют на ситуацию в России. Форум пройдет в Москве в Центре событий РБК на Космодамианской набережной
+                </p>
+                <div class="button-container">
+                <button class="read-more">Показать</button>
+                <button class="go-back">Скрыть</button>
+                </div>
+        </div>
+        
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 РБК.</p>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.news-card').forEach(card => {
+            const preview = card.querySelector('.news-preview');
+            const full = card.querySelector('.news-full');
+            const showBtn = card.querySelector('.read-more');
+            const backBtn = card.querySelector('.go-back');
+
+        showBtn.addEventListener('click', () => {
+            document.querySelectorAll('.news-card').forEach(c => {
+                c.classList.remove('active');
+                c.querySelector('.news-preview').style.display = "block";
+                c.querySelector('.news-full').style.display = "none";
+                c.querySelector('.read-more').style.display = "inline-block";
+                c.querySelector('.go-back').style.display = "none";
+            });
+
+            card.classList.add('active');
+            preview.style.display = "none";
+            full.style.display = "block";
+            showBtn.style.display = "none";
+            backBtn.style.display = "inline-block";
+        });
+
+        backBtn.addEventListener('click', () => {
+            card.classList.remove('active');
+            full.style.display = 'none';
+            preview.style.display = 'block';
+            showBtn.style.display = 'inline-block';
+            backBtn.style.display = 'none';
+        });
+    });
+
+    </script>
+</body>
+</html>

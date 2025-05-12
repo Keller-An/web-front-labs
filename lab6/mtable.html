@@ -28,6 +28,7 @@
                 alert("Введите числовые значения");
                 return;
             }
+            
             if(start > end) {
                 [start, end] = [end, start];
             }
@@ -35,7 +36,7 @@
             let tbl = document.getElementById('mtable');
             tbl.innerHTML = `<h1>Таблица умножения на ${addnum}</h1>`;
             for(let i = start; i <= end; i++) {
-                tbl.innerHTML += `<div>${i} + ${addnum} = ${i * addnum}</div>`
+                tbl.innerHTML += `<div>${i} * ${addnum} = ${i * addnum}</div>`
             }
 
         }
@@ -55,11 +56,11 @@
         <div id="mtable"></div>
 
         <div>
-            <lable>Умножить на:<input type="number" id="addnum" value="7"></lable>
+            <label>Умножить на:<input type="number" id="addnum" value="7"></label>
             <label>Начать с: <input type="number" id="start" value="1"></label>
             <label>Закончить на: <input type="number" id="end" value="10"></label>
 
-            <button onclick="showTable()">Таблица</button>
+            <button onclick="showMutipleTable()">Таблица</button>
         </div>
     </main>
 

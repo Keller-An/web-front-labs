@@ -9,7 +9,28 @@
     <link rel="icon" href="../favicon-32x32.png">
     <link rel="icon" href="../favicon-16x16.png">
     <script>
+        function changeColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.color = rgb;
+        }
+
+        let timerNum
+
+        function startChangeColors() {
+            changeColors();
+            timerNum = setInterval(changeColors, 1000);
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('stop-btn').disabled = false;
+        }
+
+        function stopChangeColors() {
+            clearInterval(timerNum);
+        }
+
         function showDate() {
+       
+
             let out = document.getElementById('current-date');
             let today = new Date();
 
@@ -27,6 +48,7 @@
                 out.innerHTML += `<div class="locale-time"><b>${loc.label}:</b> ${format}</div>`;
             }
         }
+
     </script>
 
     <style>
@@ -52,6 +74,10 @@
 
     <main>
         <div id="current-date"></div>
+        <div>
+            <button onclick="startChangeColors()" id="start-btn">Старт</button>
+            <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>
+        </div>
     </main>
 
     <footer>

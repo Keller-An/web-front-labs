@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script src="books.js"></script>
+    <script>
+        function showBooks() {
+            const bookList = document.getElementById('bookList');
+            for(let i = 0; i < books.length; i++) {
+                const book = books[i];
+                
+                let classes = 'book';
+                if (book.bestseller) classes += ' bestseller';
+                if (!book.available) classes += ' unavailable';
+
+                bookList.innerHTML += `
+                <div class="${classes}">
+                    <b>${ books[i].author }.</b>
+                    <i>${ books[i].name }.</i><br>
+                    Год публикации: ${ books[i].publicationYear }<br>
+                    Цена: <span class="price">${book.price} руб.</span><br>
+                    ${book.bestseller ? '<span class="bestSell">Бестселлер</span><br>' : ''}
+                    ${book.available
+                        ? '<span class="available">Есть в наличии</span>'
+                        : '<span class="notice">Нет в наличии</span>'}
+                </div>
+            `;
+            }
+        }
+    </script>
+    <style>
+        .book {
+            margin: 10px 0;
+            padding: 15px;
+            border: 10px outset #b87be2;
+            border-radius: 10px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 2px 5px #818de3a1;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(20, 9, 9);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .book:hover {
+            transform: scale(1.05);
+        }
+        .bestseller {
+            border: 10px outset #36993ad8;
+            background-color: #f4fff4;
+        }
+        .unavailable {
+            opacity: 0.6;
+        }
+        .bestSell {
+            background-color: #dbc047;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 10pt;
+        }
+        .notice {
+            color: red;
+            font-weight: bold;
+        }
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body onload="showBooks()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <h1>Список книг</h1>
+        <div id="bookList">
+
+        </div>
+    </main>
+    
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

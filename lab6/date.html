@@ -26,44 +26,112 @@
 
         function stopChangeColors() {
             clearInterval(timerNum);
+            document.getElementById('start-btn').disabled = false;
+            document.getElementById('stop-btn').disabled = true;
         }
 
         function showDate() {
        
-
-            let out = document.getElementById('current-date');
+            let timeDate = document.getElementById('current-date');
             let today = new Date();
-
-            const locales = [
-                {label: "Дата и время для русской локали", code: "ru-RU"},
-                {label: "Дата и время для локали Намбии", code: "af-NA"},
-                {label: "Дата и время для локали Боливии", code: "ay-BO"},
-                {label: "Дата и время для локали Германии", code: "de-DE"},
-                {label: "Дата и время для локали Канады", code: "en-CA"},
-                {label: "Дата и время для локали Мексики", code: "es-MX"},
-                {label: "Дата и время для локали Бахрейна", code: "ar-BH"}
+            let locales = [
+                {lang: "ru-RU", name: "Дата и время для русской локали"},
+                {lang: "af-NA", name:"Дата и время для локали Намбии"},
+                {lang: "ay-BO", name: "Дата и время для локали Боливии"},
+                {lang: "de-DE", name: "Дата и время для локали Германии"},
+                {lang: "en-CA", name: "Дата и время для локали Канады"},
+                {lang: "es-MX", name: "Дата и время для локали Мексики"},
+                {lang: "ar-BH", name: "Дата и время для локали Бахрейна"}
             ]
-            for (const loc of locales) {
-                const format = today.toLocaleString(loc.code);
-                out.innerHTML += `<div class="locale-time"><b>${loc.label}:</b> ${format}</div>`;
-            }
+            let out = '';
+            locales.forEach(locale => {
+                out += `<div class = "date-local">
+                    <span class = "local-name">${locale.name}:</span>
+                    ${today.toLocaleString(locale.lang)}
+                    </div>`
+            });
+            timeDate.innerHTML = out;
         }
+
+        let timeupdate;
+            function StartUpdateTime() {
+                showDate();
+                if(!timeupdate) {
+                    timeupdate = setInterval(showDate, 2000);
+                }
+                document.getElementById('update-btn').disabled = true;
+                document.getElementById('stopUp-btn').disabled = false;
+            }
+
+            function stopUpdateTime() {
+                if (timeupdate) {
+                    clearInterval(timeupdate);
+                    timeupdate = null;
+                }
+                document.getElementById('update-btn').disabled = false;
+                document.getElementById('stopUp-btn').disabled = true;
+            }
+
 
     </script>
 
     <style>
-        .locale-time{
+        .date-local{
             background-color: rgb(202, 158, 180);
             border: 6px solid rgba(202, 215, 216, 0.879);
             padding: 10px 15px;
             border-radius: 8px;
             margin: 10px;
             color: rgb(26, 14, 195);
+            box-shadow: 4px 4px 8px #689abfd0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16pt;
+        }
+        .local-name {
+            font-weight: bold;
+
         }
         body {
             font-family: 'Times New Roman', Times, serif;
             text-align: center;
         }
+        h1 {
+            margin-top: 30px;
+            color: rgb(40, 161, 177);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 24pt;
+        }
+        #current-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px auto;
+            max-width: 700px;
+            justify-content: center;
+        }
+        .group-btn {
+            margin: 20px;
+        }
+        button {
+            background-color: deepskyblue;
+            color: azure;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 4px solid rgba(85, 84, 84, 0.846);
+            border-radius: 8px;
+            font-size: 14pt;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: rgba(63, 111, 111, 0.816);
+            transform: scale(1.05);
+        }
+        button:disabled {
+            background-color: rgb(94, 197, 156);
+            cursor: not-allowed;
+        }
+
 
     </style>
 </head>
@@ -73,8 +141,13 @@
     </header>
 
     <main>
+        <h1>Дата и время для разных локалей</h1>
         <div id="current-date"></div>
-        <div>
+        <div class="group-btn">
+            <button onclick="StartUpdateTime()" id="update-btn">Обновить время</button>
+            <button onclick="stopUpdateTime()" id="stopUp-btn">Остановить обновление</button>
+        </div>
+        <div class="group-btn">
             <button onclick="startChangeColors()" id="start-btn">Старт</button>
             <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>
         </div>

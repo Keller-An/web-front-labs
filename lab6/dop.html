@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        h1 {
+            font-weight: bold;
+        }
+        #chart {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 18px;
+            height: 400px;
+            margin: 30px auto;
+            padding: 10px 20px;
+            border-radius: 16px;
+            background-color: #fff;
+            box-shadow: 4px 4px 12px rgba(10, 71, 139, 0.534);
+            transition: all 0.3s ease;
+        }
+        .bar {
+            width: 24px;
+            display: flex;
+            flex-direction: column-reverse;
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .bar:hover {
+            transform: scale(1.05);
+        }
+        .min {
+            background: #4f8df9;
+            border-radius: 8px 8px 0;
+        }
+        .max {
+            background: #a6d5ff;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 2px;
+        }
+        .selected .min {
+            background: #ff8a5c
+        }
+        .selected .max {
+            background: #ff8a5c
+        }
+        .temp-label {
+            font-size: 12pt;
+            color: #562d2d;
+            margin-bottom: 4px;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 18pt;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .input-block {
+            margin-top: 25px;
+        }
+        input[type="number"] {
+            width: 50px;
+            padding: 7px 9px;
+            border: 3px solid salmon;
+            border-radius: 6px;
+            font-size: 14pt;
+            margin-left: 5px;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 14pt;
+            background-color: #4caf50;
+            color: aliceblue;
+            font-family: 'Times New Roman', Times, serif;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover{
+            background-color: #0f350f;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <h1>Диаграмма температур за месяц</h1>
+        <div id="chart"></div>
+
+        <div class="input-block">
+            <label>Номер дня: <input type="number" id="dayInput" min="1" max="30"></label>
+            <button onclick="highlightDay()">Найти</button>
+        </div>
+        <div class="info" id="info"></div>
+
+    </main>
+
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+
+    <script>
+        const chart = document.getElementById('chart');
+        const info = document.getElementById('info');
+        const data = [];
+
+        for (let i = 0; i < 30; i++) {
+            const minTemp = Math.floor(Math.random() * 11) + 5;
+            const maxTemp = minTemp + Math.floor(Math.random() * 16) + 5;
+            data.push({ min: minTemp, max: maxTemp });
+        }
+
+        let selectedBar = null;
+
+        function renderChart() {
+            chart.innerHTML = '';
+            data.forEach((temp, index) => {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.dataset.index = index;
+
+                const maxDiv = document.createElement('div');
+                maxDiv.className = 'max';
+                maxDiv.style.height = temp.max * 4 + 'px';
+                maxDiv.title = temp.max + '°C'
+
+                const maxLabel = document.createElement('div');
+                maxLabel.className = 'temp-label';
+                maxLabel.textContent = temp.max + '°C';
+
+                const minDiv = document.createElement('div');
+                minDiv.className = 'min';
+                minDiv.style.height = (temp.min) * 4 + 'px';
+                minDiv.title = temp.min + '°C';
+
+                const minLabel = document.createElement('div');
+                minLabel.className = 'temp-label';
+                minLabel.textContent = temp.min + '°C';
+
+                bar.appendChild(minLabel);
+                bar.appendChild(minDiv);
+                bar.appendChild(maxDiv);
+                bar.appendChild(maxLabel);
+
+                bar.onclick = () => highlightDay(index + 1);
+                chart.appendChild(bar);
+            });
+        }
+
+        function highlightDay (day = null) {
+            if (!day) day = parseInt(document.getElementById('dayInput').value);
+            if (isNaN(day) || day < 1 || day > 30) {
+                info.textContent = "Введите корректный номер дня (1–30)";
+                return;
+            }
+            if (selectedBar !== null) {
+                chart.children[selectedBar].classList.remove('selected');
+            }
+
+            selectedBar = day - 1;
+            chart.children[selectedBar].classList.add('selected');
+            const temp = data[selectedBar];
+            info.innerHTML = `Минимальная температура: <b>${temp.min}°C</b><br>Максимальная температура: <b>${temp.max}°C</b>`;
+        }
+        renderChart();
+
+    </script>
+</body>
+</html>

@@ -19,6 +19,7 @@ header {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     z-index: 1000;
 }
+
 footer {
     padding: 20px;
     font-size: 15pt;
@@ -36,6 +37,7 @@ nav {
       justify-content: space-between;
       align-items: center;
       padding: 20px;
+      gap: ;
     }
 
 nav a {

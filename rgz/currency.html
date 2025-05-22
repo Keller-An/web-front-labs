@@ -71,12 +71,12 @@
             }
             return {dates, rates};
         }
-                async function drawChart() {
-            const data = await fetchHistoricalData();
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(100, 200, 100, 0.6)'); 
-            gradient.addColorStop(1, 'rgba(50, 120, 50, 0.2)'); 
+            async function drawChart() {
+                const data = await fetchHistoricalData();
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, 'rgba(100, 200, 100, 0.6)'); 
+                gradient.addColorStop(1, 'rgba(50, 120, 50, 0.2)'); 
 
             if (chart) chart.destroy();
 

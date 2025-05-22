@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Махмадбекова Анастасия Эргашевна. Расчетно-графическое задание</title>
+    <title>О компании РБК</title>
     <link rel="stylesheet" href="../styleRGZ.css">
     <link rel="shortcut icon" href="../faviconRGZ.ico" type="image/x-icon">
     <link rel="icon" href="../faviconRGZ-32x32.png">
@@ -181,12 +181,10 @@
     </footer>
     <script>
     const faders = document.querySelectorAll('.fade-in');
-
     const appearOptions = {
         threshold: 0.2,
         rootMargin: '0px 0px -50px 0px'
     };
-
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
@@ -194,7 +192,6 @@
             observer.unobserve(entry.target);
         });
     }, appearOptions);
-
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });

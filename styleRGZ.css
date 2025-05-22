@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
 html {
-    scroll-behavior: smooth; /* Плавная прокрутка для всей страницы */
+    scroll-behavior: smooth; 
 }
 body {
     font-family: 'Manrope', sans-serif;
@@ -37,7 +37,7 @@ nav {
       justify-content: space-between;
       align-items: center;
       padding: 20px;
-      gap: ;
+      gap: 1;
     }
 
 nav a {

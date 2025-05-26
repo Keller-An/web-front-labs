@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script>
+        const dates = [
+        "26.05.2025", "23.05.2025", "22.05.2025", "21.05.2025", "20.05.2025", 
+        "19.05.2025", "16.05.2025", "15.05.2025", "14.05.2025", "13.05.2025", 
+        ];
+
+        const price = [
+            502.20, 509.80, 520.00, 522.60, 550.80, 556.00, 
+            542.60, 541.00, 532.60, 530.00 
+        ];
+
+        function showStocks(button) {
+            let html = "<table><tr><th>Дата</th><th>Цена</th><th>Изменение</th></tr>";
+            
+                for(let i = 0; i < dates.length; i++) {
+                    let change = "";
+                    let className = "zero";
+
+                    if (i > 0) {
+                        let diff = price[i] - price[i - 1];
+                        let average = diff.toFixed(2);
+                        if (diff > 0) {
+                            className = "plus";
+                            change = "+" + average;
+                        } else if (diff < 0) {
+                            className = "minus";
+                            change = average;
+                        } else {
+                            change = "0.00";
+                        }
+                    } else {
+                        change = "—"
+                    }
+
+                    html += `<tr>
+                        <td>${dates[i]}</td>
+                        <td>${price[i].toFixed(2)}</td>
+                        <td class ="${className}">${change}</td>
+                    </tr>`;
+                }
+
+                html += "</table>";
+                document.getElementById("stock-table").innerHTML = html;
+
+                const min = Math.min(...price).toFixed(2);
+                const max = Math.max(...price).toFixed(2);
+                const avg = (price.reduce((a, b) => a + b, 0) / price.length).toFixed(2);
+
+                document.getElementById("summary").innerHTML = `
+                <p>Среднее значение: <b>${avg}</b> руб</p>
+                <p>Минимальное значение: <b>${min}</b> руб</p>
+                <p>Максимальное значение: <b>${max}</b> руб</p>
+            `;
+
+            button.remove();
+        }
+        
+    </script>
+
+    <style>
+        table {
+            border: 1px solid #000000;
+            padding: 10px 15px;
+            font-size: 14px;
+            margin: 0 auto;
+            width: 70%;
+            background-color: #a479abbd;
+            font-size: 18px;
+        }
+        th {
+            background-color: #914d8d;
+        }
+        td, th {
+            border: 1px solid #000000;
+            padding: 8px;
+        }
+
+        .plus { color: rgb(21, 205, 21); }
+        .minus { color: red; }
+        .zero { color: black; }
+
+        #summary {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        #stock-table, #summary {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+
+    <main>
+        <h1 style="text-align: center;">Анализ акций компании ЦИАН</h1>
+        <button onclick="showStocks(this)">Курс акций ЦИАН</button>
+        <div id="stock-table"></div>
+        <div id="summary"></div>
+    </main>
+
+
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

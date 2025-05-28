@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script>
+        function getTemperatureToday() {
+            const url = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok";
+
+            fetch(url) 
+                .then(response => response.json())
+                .then(data => {
+                    const times = data.hourly.time;
+                    const temps = data.hourly.temperature_2m;
+
+                    const index8am = times.findIndex(time => time.includes("08:00"));
+                    const index12pm = times.findIndex(time => time.includes("12:00"));
+                    const index8pm = times.findIndex(time => time.includes("20:00"));
+
+                    const message = `
+                    <div class = "info">
+                        <h2>Прогноз погоды в Новосибирске на сегодня: </h2>
+                        <p>Погода на 8 утра: <strong>${temps[index8am].toFixed(1)} °C</strong></p>
+                        <p>Погода на 12 дня: <strong>${temps[index12pm].toFixed(1)} °C</strong></p>
+                        <p>Погода на 8 вечера: <strong>${temps[index8pm].toFixed(1)} °C</strong></p>
+                    </div>`;
+                    document.getElementById('weather-result').innerHTML = message;
+                })
+                .catch(error => {
+                    console.error('Ошибка получения прогноза погоды:', error);
+                })
+        }
+    </script>
+    
+    <style>
+        button {
+            font-size: 16px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 10px 20px;
+            background-color: rgb(99, 175, 177);
+            color: azure;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 2px 4px 8px rgba(16, 50, 136, 0.592);
+            transition: background-color 0.2s ease;
+            margin: 20px 0;
+        }
+        button:hover {
+            box-shadow: 4px 6px 10px rgba(103, 103, 233, 0.619);
+        }
+        button:active {
+            color: rgb(119, 72, 121);
+        }
+        #weather-result {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(36, 121, 97, 0.858);
+            border: 4px solid rgb(53, 213, 197);
+            box-shadow: 2px 4px 6px rgba(4, 79, 154, 0.522);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .info h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: rgb(84, 180, 244);
+            border-bottom: 1px solid #80acba;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .info p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <button onclick="getTemperatureToday()">Показать температуру в Новосибирске на сегодня</button>
+        <div id="weather-result"></div>
+    </main>
+
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махмадбекова Анастасия Эргашевна. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script>
+        function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            fetch(url)
+                .then(response => response.json()) 
+                .then(json => {
+                    const currentRate = json.Valute.EUR.Value;
+                    const previousRate = json.Valute.EUR.Previous;
+                    const date = new Date(json.Date).toLocaleDateString('ru-RU');
+
+                    const difference = (currentRate - previousRate).toFixed(4);
+                    const direction = currentRate > previousRate ?
+                        `<span class="up">Курс евро вырос на ${difference} руб.</span>` :
+                        currentRate < previousRate ? `<span class="down">Курс евро упал на ${Math.abs(difference)} руб.</span>` :
+                        `<span>Курс не изменился</span>`;
+
+                    document.getElementById('result').innerHTML = `
+                        <h3>Курс евро</h3>
+                        <p><strong>Дата:</strong> ${date}</p>
+                        <p><strong>Текущий курс:</strong> ${currentRate.toFixed(4)} руб.</p>
+                        <p><strong>Курс за предыдущую дату:</strong> ${previousRate.toFixed(4)} руб.</p>
+                        <p>${direction}</p>
+                        <a class="link" href = "https://www.cbr-xml-daily.ru/" target="_blank">Источник: cbr-xml-daily.ru</a>`;
+
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = `<p style="color: red;">Ошибка загрузки данных: ${error}</p>`;
+                })
+        }
+    </script>
+
+    <style>
+        button {
+            font-size: 16pt;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: rgb(78, 45, 197);
+            background-color: #9fd1a0;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.482);
+            margin-bottom: 20px;
+        }
+        button:hover {
+            box-shadow: 4px 6px 8px black;
+        }
+        button:active {
+            color: red;
+        }
+        #result {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 18px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(106, 119, 217);
+            background-color: #e2b5b5;
+            border: 3px solid #8f88d3;
+            border-radius: 10px;
+            box-shadow: 2px 4px 8px rgba(120, 28, 28, 0.437);
+            line-height: 1.6;
+            text-align: center;
+        }
+        .up {
+            color: green;
+            font-weight: bold;
+        }
+        .down {
+            color: red;
+            font-weight: bold;
+        }
+        a.link {
+            display: block;
+            margin-top: 15px;
+            font-weight: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <button onclick="getEuroExchangeRate()">Получить курс евро</button>
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        &copy; Махмадбекова Анастасия, ФБИ-32, 2 курс, 2025
+    </footer>
+</body>
+</html>

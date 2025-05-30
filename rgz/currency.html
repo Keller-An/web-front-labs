@@ -18,7 +18,7 @@
             const responce = await fetch(apiDaily);
             const data = await responce.json();
             currentRate = data.Valute.KGS.Value;
-            console.log("Курс KGS:", currentRate);
+            
 
         }
 
@@ -90,8 +90,6 @@
                         backgroundColor: gradient,
                         borderColor: 'rgba(60, 140, 60, 1)',
                         borderWidth: 2,
-                        fill: true,
-                        tension: 0.2
                     }]
                 },
                 options: {
